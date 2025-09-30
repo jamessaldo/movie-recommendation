@@ -1,0 +1,98 @@
+<!-- Movie Card -->
+<div
+  class="uk-card uk-card-default uk-card-hover movie-card uk-transition-toggle"
+>
+  <!-- Poster -->
+  <div class="uk-card-media-top uk-overflow-hidden uk-position-relative">
+    <img
+      src="{{posterUrl}}"
+      alt="{{title}} movie poster"
+      class="uk-width-1-1 movie-poster"
+      style="
+        aspect-ratio: 2/3;
+        object-fit: cover;
+        height: 240px;
+        display: block;
+      "
+      onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    />
+    <!-- Single fallback for any image issues -->
+    <div
+      class="uk-flex uk-flex-center uk-flex-middle uk-background-muted image-fallback"
+      style="aspect-ratio: 2/3; height: 240px; display: none"
+    >
+      <div class="uk-text-center">
+        <uk-icon icon="image" class="uk-text-muted" style="ratio: 2"></uk-icon>
+        <div class="uk-text-small uk-text-muted uk-margin-small-top">
+          No Poster
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating Badge -->
+    <div class="uk-position-top-right uk-margin-small">
+      <span class="uk-badge uk-badge-warning">
+        <uk-icon icon="star" style="color: #fff; margin-right: 4px"></uk-icon>
+        {{rating}}
+      </span>
+    </div>
+  </div>
+
+  <!-- Movie Info -->
+  <div class="uk-card-body uk-padding-small">
+    <h3
+      class="uk-card-title uk-margin-remove uk-text-truncate uk-text-small"
+      title="{{title}}"
+    >
+      {{title}}
+    </h3>
+    <div class="uk-flex uk-flex-between uk-flex-middle uk-margin-small-top">
+      <span class="uk-text-meta uk-text-small">
+        <uk-icon icon="calendar" class="uk-margin-small-right"></uk-icon>
+        {{releaseYear}}
+      </span>
+    </div>
+
+    <!-- Compact Rating Preview -->
+    <div class="uk-margin-small-top mt-2">
+      <div class="uk-text-center">
+        <div
+          class="uk-button-group uk-button-group-small uk-width-1-1 uk-text-meta"
+          uk-tooltip="Feature coming in Version 2"
+        >
+          <button
+            class="uk-button uk-button-outline uk-button-small uk-disabled"
+            disabled
+          >
+            <uk-icon icon="star" class="uk-margin-small-right"></uk-icon>
+          </button>
+          <button
+            class="uk-button uk-button-outline uk-button-small uk-disabled"
+            disabled
+          >
+            <uk-icon icon="star" class="uk-margin-small-right"></uk-icon>
+          </button>
+          <button
+            class="uk-button uk-button-outline uk-button-small uk-disabled"
+            disabled
+          >
+            <uk-icon icon="star" class="uk-margin-small-right"></uk-icon>
+          </button>
+          <button
+            class="uk-button uk-button-outline uk-button-small uk-disabled"
+            disabled
+          >
+            <uk-icon icon="star" class="uk-margin-small-right"></uk-icon>
+          </button>
+          <button
+            class="uk-button uk-button-outline uk-button-small uk-disabled"
+            disabled
+          >
+            <uk-icon icon="star" class="uk-margin-small-right"></uk-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

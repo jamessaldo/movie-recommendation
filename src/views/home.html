@@ -1,0 +1,27 @@
+<!-- Home Page -->
+<div class="uk-section uk-section-small uk-section-default">
+  <div class="uk-container">
+    <div class="uk-text-center uk-margin-large-bottom mb-2 mt-2">
+      <h1 class="uk-heading-large uk-margin-bottom uk-text-bold">
+        Top Rated Movies
+      </h1>
+      <p class="uk-text-lead uk-text-muted uk-width-2-3@m uk-margin-auto">
+        Discover the highest-rated movies from The Movie Database and find your
+        next favorite film
+      </p>
+      <hr class="uk-divider-small uk-margin-medium-top" />
+    </div>
+  </div>
+</div>
+
+<!-- Loading State -->
+<div
+  id="loading-state"
+  class="uk-text-center uk-margin-large"
+  style="display: none"
+>
+  <div uk-spinner="ratio: 2"></div>
+  <p class="uk-text-muted uk-margin-small-top">Loading movies...</p>
+</div>
+
+{{> movies/grid}}

@@ -1,0 +1,27 @@
+{
+  "name": "movie-recommendation",
+  "version": "1.0.0",
+  "description": "Movie Rating PoC with HTMX + Elysia.js + SQLite + Franken-UI",
+  "main": "src/app.ts",
+  "scripts": {
+    "dev": "bun --watch src/app.ts",
+    "start": "bun src/app.ts",
+    "migrate": "bun src/db/migrate.ts",
+    "build:css": "bunx tailwindcss -i ./src/styles.css -o ./public/styles.css",
+    "watch:css": "bunx tailwindcss -i ./src/styles.css -o ./public/styles.css --watch"
+  },
+  "dependencies": {
+    "elysia": "latest",
+    "@elysiajs/html": "latest",
+    "@elysiajs/static": "latest",
+    "@elysiajs/cookie": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "@types/node": "latest",
+    "bun-types": "latest",
+    "tailwindcss": "latest"
+  },
+  "module": "src/app.ts",
+  "type": "module"
+}

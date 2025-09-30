@@ -1,0 +1,458 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom navbar and auth styling */
+.auth-content {
+  position: relative;
+  z-index: 9999;
+}
+
+/* Ensure dropdown works properly */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
+/* Force dropdown to appear above everything */
+.auth-content .group > div[class*="absolute"] {
+  z-index: 9999 !important;
+}
+
+/* Smooth transitions for interactive elements */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
+
+/* Enhanced movie card styling with smaller size */
+.movie-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  overflow: hidden;
+  will-change: transform;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Image loading and error handling */
+.movie-poster {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.movie-poster:hover {
+  transform: scale(1.08);
+}
+
+.image-fallback {
+  width: 100%;
+  height: 240px;
+  display: none !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.movie-poster {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Grid system fixes */
+.uk-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.uk-grid > * {
+  margin: 0;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.uk-grid.uk-grid-small {
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+/* Responsive grid widths */
+.uk-child-width-1-2 > * { width: calc(50% - 0px); }
+.uk-child-width-1-3 > * { width: calc(33.333% - 0px); }
+.uk-child-width-1-4 > * { width: calc(25% - 0px); }
+.uk-child-width-1-5 > * { width: calc(20% - 0px); }
+.uk-child-width-1-6 > * { width: calc(16.666% - 0px); }
+
+@media (min-width: 640px) {
+  .uk-child-width-1-3\@s > * { width: calc(33.333% - 0px); }
+}
+
+@media (min-width: 768px) {
+  .uk-child-width-1-4\@m > * { width: calc(25% - 0px); }
+}
+
+@media (min-width: 1024px) {
+  .uk-child-width-1-5\@l > * { width: calc(20% - 0px); }
+}
+
+@media (min-width: 1280px) {
+  .uk-child-width-1-6\@xl > * { width: calc(16.666% - 0px); }
+}
+
+/* Compact card body */
+.movie-card .uk-card-body {
+  padding: 12px;
+}
+
+.movie-card .uk-card-title {
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Compact rating buttons */
+.uk-button-group-small .uk-button {
+  padding: 2px 6px;
+  min-height: 24px;
+  font-size: 11px;
+}
+
+/* Rating badge improvements */
+.uk-badge {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 193, 7, 0.95) !important;
+  font-size: 11px;
+  padding: 2px 6px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+
+/* Animation improvements */
+.uk-animation-slide-bottom-small {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navigation enhancements */
+.uk-navbar-container {
+  backdrop-filter: blur(14px);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 55%, #5b5edc 100%)
+    !important;
+  border-bottom: none;
+  box-shadow: 0 20px 45px -18px rgba(86, 110, 255, 0.65);
+  z-index: 120;
+}
+
+.navbar-logo {
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.navbar-logo-text {
+  color: #ffffff;
+}
+
+.navbar-gradient .uk-navbar-item,
+.navbar-gradient .uk-navbar-nav > li > a,
+.navbar-gradient .uk-logo {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.navbar-gradient .uk-navbar-item:hover,
+.navbar-gradient .uk-navbar-nav > li > a:hover,
+.navbar-gradient .uk-logo:hover {
+  color: #ffffff;
+}
+
+.navbar-gradient .uk-icon,
+.navbar-gradient [uk-icon] {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-tagline {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.nav-auth-slot {
+  gap: 12px;
+}
+
+.nav-auth-slot form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-auth-slot .uk-button {
+  border-radius: 9999px;
+}
+
+@media (max-width: 1024px) {
+  .navbar-tagline {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-auth-slot {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-auth-slot form {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .nav-auth-slot .uk-input {
+    width: 100% !important;
+  }
+
+  .nav-auth-slot .uk-text-small {
+    text-align: left;
+  }
+
+  .nav-auth-slot .uk-margin-small-right {
+    margin-right: 0 !important;
+  }
+}
+
+/* Custom alert styling */
+.uk-alert-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+/* Loading state improvements */
+#loading-state {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* HTMX loading indicators */
+.htmx-indicator {
+  display: none;
+}
+
+.htmx-request .htmx-indicator {
+  display: inline-block;
+}
+
+.htmx-request #loading-state {
+  display: block !important;
+}
+
+/* Responsive improvements for smaller cards */
+@media (max-width: 640px) {
+  .movie-card {
+    max-width: 150px;
+  }
+  
+  .movie-card:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+  
+  .uk-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .movie-card .uk-card-body {
+    padding: 8px;
+  }
+  
+  .movie-card .uk-card-title {
+    font-size: 12px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .movie-card,
+  .movie-poster {
+    transition: none;
+  }
+  
+  .uk-animation-slide-bottom-small {
+    animation: none;
+  }
+}
+
+/* Focus states */
+.uk-button:focus,
+.uk-input:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Ensure proper image aspect ratios */
+.movie-poster {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Animation improvements */
+.uk-animation-slide-bottom-small {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navigation enhancements */
+.uk-navbar-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Custom alert styling */
+.uk-alert-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+/* Loading state improvements */
+#loading-state {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* HTMX loading indicators */
+.htmx-indicator {
+  display: none;
+}
+
+.htmx-request .htmx-indicator {
+  display: inline-block;
+}
+
+.htmx-request #loading-state {
+  display: block !important;
+}
+
+/* Responsive improvements for smaller cards */
+@media (max-width: 640px) {
+  .movie-card {
+    max-width: 150px;
+  }
+  
+  .movie-card:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+  
+  .uk-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .movie-card .uk-card-body {
+    padding: 8px;
+  }
+  
+  .movie-card .uk-card-title {
+    font-size: 12px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .movie-card,
+  .movie-poster {
+    transition: none;
+  }
+  
+  .uk-animation-slide-bottom-small {
+    animation: none;
+  }
+}
+
+/* Focus states */
+.uk-button:focus,
+.uk-input:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Ensure proper image aspect ratios */
+.movie-poster {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Enhanced pagination styling */
+.pagination-container {
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-container .uk-button {
+  transition: all 0.2s ease;
+}
+
+.pagination-container .uk-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

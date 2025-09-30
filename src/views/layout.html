@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Rating PoC</title>
+
+    <!-- Franken UI CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0/dist/css/core.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0/dist/css/utilities.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- HTMX -->
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js"></script>
+
+    <!-- Franken UI JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0/dist/js/core.iife.js"
+      type="module"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0/dist/js/icon.iife.js"
+      type="module"
+    ></script>
+  </head>
+  <body id="content" class="uk-background-muted">
+    <!-- Navigation -->
+    <nav
+      class="sticky top-0 z-50 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 shadow-lg backdrop-blur-md border-b border-white/10"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo and Brand -->
+          <div class="flex items-center space-x-4">
+            <a
+              href="/"
+              class="flex items-center space-x-3 text-white hover:text-blue-100 transition-colors duration-200"
+            >
+              <div
+                class="flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl backdrop-blur-sm"
+              >
+                <svg
+                  class="w-6 h-6 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V9a1 1 0 00-1.447-.894l-2 1z"
+                  />
+                </svg>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-lg font-bold text-white"
+                  >Movie Rating PoC</span
+                >
+                <span class="text-xs text-blue-100 hidden sm:block"
+                  >Discover top-rated gems</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop tagline -->
+          <div class="hidden lg:flex items-center">
+            <div
+              class="text-sm text-blue-100 px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm border border-white/20"
+            >
+              ✨ Powered by TMDB • Built with Modern Stack
+            </div>
+          </div>
+
+          <!-- Auth Section -->
+          <div class="flex items-center">
+            <div class="auth-content">{{{AUTH_CONTENT}}}</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="uk-section uk-section-default">
+      <div class="uk-container">
+        {{#if flash}}
+        <div class="uk-alert-primary uk-margin" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p>{{flash}}</p>
+        </div>
+        {{/if}} {{{CONTENT}}}
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="uk-section uk-section-secondary uk-section-small">
+      <div class="uk-container">
+        <div class="uk-text-center uk-text-muted">
+          <p class="uk-margin-remove">
+            Powered by
+            <a href="https://www.themoviedb.org/" class="uk-link-muted">TMDB</a>
+            • Built with
+            <a href="https://elysiajs.com" class="uk-link-muted">Elysia.js</a> &
+            <a href="https://htmx.org" class="uk-link-muted">HTMX</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

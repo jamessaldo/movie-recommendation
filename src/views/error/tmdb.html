@@ -1,0 +1,31 @@
+<!-- TMDB Error Page -->
+<div class="text-center py-16">
+  <div class="max-w-md mx-auto">
+    <!-- Error Icon -->
+    <div class="text-6xl mb-4">⚠️</div>
+
+    <!-- Error Message -->
+    <h1 class="text-2xl font-bold text-gray-900 mb-4">
+      Movies Temporarily Unavailable
+    </h1>
+
+    <p class="text-gray-600 mb-8">
+      We're having trouble loading movies right now. This could be due to a
+      temporary issue with our movie database.
+    </p>
+
+    <!-- Retry Button -->
+    <button
+      class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
+      hx-get="/?page=1"
+      hx-target="body"
+      hx-swap="outerHTML"
+    >
+      Try Again
+    </button>
+
+    <p class="text-sm text-gray-500 mt-4">
+      If the problem persists, please try again in a few minutes.
+    </p>
+  </div>
+</div>
