@@ -30,6 +30,14 @@
       src="https://cdn.jsdelivr.net/npm/franken-ui@2.1.0/dist/js/icon.iife.js"
       type="module"
     ></script>
+
+    <!-- Notification Script -->
+    <script type="module">
+      {{#if flash}}
+        var notifications = UIkit.notification("{{flash}}", "destructive");
+        notifications.show();
+      {{/if}}
+    </script>
   </head>
   <body id="content" class="uk-background-muted">
     <!-- Navigation -->
@@ -71,14 +79,7 @@
 
     <!-- Main Content -->
     <main class="uk-section uk-section-default">
-      <div class="uk-container">
-        {{#if flash}}
-        <div class="uk-alert-primary uk-margin" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p>{{flash}}</p>
-        </div>
-        {{/if}} {{{CONTENT}}}
-      </div>
+      <div class="uk-container">{{{CONTENT}}}</div>
     </main>
 
     <!-- Footer -->
