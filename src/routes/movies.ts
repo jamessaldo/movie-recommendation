@@ -1,3 +1,4 @@
+import { RatingService } from "../services/rating";
 import { tmdbService } from "../services/tmdb";
 
 export interface MovieGridContext {
@@ -19,8 +20,15 @@ export interface MovieGridContext {
 }
 
 export class MoviesController {
+  private ratingService: RatingService;
+
+  constructor() {
+    this.ratingService = new RatingService();
+  }
+
   async getHomepage(
-    page: number = 1
+    page: number = 1,
+    userId?: string
   ): Promise<MovieGridContext | { error: string }> {
     // Clamp page to valid range (1-20)
     if (page < 1 || page > 20) {
@@ -30,15 +38,30 @@ export class MoviesController {
     try {
       const response = await tmdbService.getTopRated(page);
 
-      const movies = response.results.map((movie) => ({
-        id: movie.id,
-        title: movie.title,
-        releaseYear: movie.release_date
-          ? new Date(movie.release_date).getFullYear()
-          : "Unknown",
-        posterUrl: tmdbService.buildPosterURL(movie.poster_path),
-        rating: movie.vote_average.toFixed(1),
-      }));
+      // Enhance movies with rating data
+      const movies = await Promise.all(
+        response.results.map(async (movie) => {
+          const stats = await this.ratingService.getMovieStats(movie.id);
+          const userRating = userId
+            ? await this.ratingService.getUserRating(movie.id, userId)
+            : null;
+
+          return {
+            id: movie.id,
+            title: movie.title,
+            releaseYear: movie.release_date
+              ? new Date(movie.release_date).getFullYear()
+              : "Unknown",
+            posterUrl: tmdbService.buildPosterURL(movie.poster_path),
+            rating: movie.vote_average.toFixed(1),
+            // v2 rating data
+            stats,
+            userRating,
+            // Include login state in movie context
+            is_logged_in: !!userId,
+          };
+        })
+      );
 
       const totalPages = Math.min(response.total_pages, 20); // Cap at 20 pages
 
@@ -56,12 +79,6 @@ export class MoviesController {
           });
         }
       }
-
-      // Determine if we need to show first/last page and ellipsis
-      const showFirstPage = startPage > 1;
-      const showLastPage = endPage < totalPages;
-      const showFirstEllipsis = startPage > 2;
-      const showLastEllipsis = endPage < totalPages - 1;
 
       const result = {
         movies,

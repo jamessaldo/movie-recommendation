@@ -18,15 +18,27 @@ export class DatabaseMigrator {
     console.log("Running database migrations...");
 
     try {
-      const migrationPath = join(
+      // Run migration 001
+      const migration001Path = join(
         __dirname,
         "migrations",
         "001_initial_schema.sql"
       );
-      const migrationSQL = readFileSync(migrationPath, "utf-8");
+      const migration001SQL = readFileSync(migration001Path, "utf-8");
 
-      this.db.exec(migrationSQL);
+      this.db.exec(migration001SQL);
       console.log("✓ Migration 001_initial_schema.sql completed successfully");
+
+      // Run migration 002
+      const migration002Path = join(
+        __dirname,
+        "migrations",
+        "002_rating_schema.sql"
+      );
+      const migration002SQL = readFileSync(migration002Path, "utf-8");
+
+      this.db.exec(migration002SQL);
+      console.log("✓ Migration 002_rating_schema.sql completed successfully");
     } catch (error) {
       console.error("Migration failed:", error);
       throw error;

@@ -1,0 +1,113 @@
+<!-- Rating controls partial: 1-5 star rating buttons -->
+<div id="rating-{{id}}" class="rating-controls">
+  {{#if is_logged_in}}
+  <!-- Logged-in users see interactive rating form -->
+  <form
+    hx-post="/rate"
+    hx-target="#stats-{{id}}"
+    hx-swap="innerHTML"
+    class="flex items-center gap-1"
+  >
+    <input type="hidden" name="movie_id" value="{{id}}" />
+
+    <!-- 1 Star Button -->
+    <button
+      type="submit"
+      name="score"
+      value="1"
+      class=" flex h-7 w-7 items-center justify-center rounded-full border text-xs transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-1 {{#if (eq userRating 1)}}border-amber-500 bg-amber-500 text-white{{else}}border-slate-300 bg-white text-slate-400 hover:border-amber-400 hover:text-amber-500{{/if}}"
+      title="Rate 1 star"
+      style="cursor: pointer"
+    >
+      {{#if gt userRating 0}}★{{else}}☆{{/if}}
+    </button>
+
+    <!-- 2 Star Button -->
+    <button
+      type="submit"
+      name="score"
+      value="2"
+      class="flex h-7 w-7 items-center justify-center rounded-full border text-xs transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-1 {{#if (eq userRating 2)}}border-amber-500 bg-amber-500 text-white{{else}}border-slate-300 bg-white text-slate-400 hover:border-amber-400 hover:text-amber-500{{/if}}"
+      title="Rate 2 stars"
+      style="cursor: pointer"
+    >
+      {{#if gt userRating 1}}★{{else}}☆{{/if}}
+    </button>
+
+    <!-- 3 Star Button -->
+    <button
+      type="submit"
+      name="score"
+      value="3"
+      class="flex h-7 w-7 items-center justify-center rounded-full border text-xs transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-1 {{#if (eq userRating 3)}}border-amber-500 bg-amber-500 text-white{{else}}border-slate-300 bg-white text-slate-400 hover:border-amber-400 hover:text-amber-500{{/if}}"
+      title="Rate 3 stars"
+      style="cursor: pointer"
+    >
+      {{#if gt userRating 2}}★{{else}}☆{{/if}}
+    </button>
+
+    <!-- 4 Star Button -->
+    <button
+      type="submit"
+      name="score"
+      value="4"
+      class="flex h-7 w-7 items-center justify-center rounded-full border text-xs transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-1 {{#if (eq userRating 4)}}border-amber-500 bg-amber-500 text-white{{else}}border-slate-300 bg-white text-slate-400 hover:border-amber-400 hover:text-amber-500{{/if}}"
+      title="Rate 4 stars"
+      style="cursor: pointer"
+    >
+      {{#if gt userRating 3}}★{{else}}☆{{/if}}
+    </button>
+
+    <!-- 5 Star Button -->
+    <button
+      type="submit"
+      name="score"
+      value="5"
+      class="flex h-7 w-7 items-center justify-center rounded-full border text-xs transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-1 {{#if (eq userRating 5)}}border-amber-500 bg-amber-500 text-white{{else}}border-slate-300 bg-white text-slate-400 hover:border-amber-400 hover:text-amber-500{{/if}}"
+      title="Rate 5 stars"
+      style="cursor: pointer"
+    >
+      {{#if gt userRating 4}}★{{else}}☆{{/if}}
+    </button>
+  </form>
+  {{else}}
+  <!-- Logged-out users see disabled buttons -->
+  <div class="flex items-center gap-1">
+    <button
+      disabled
+      class="flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-slate-200 bg-slate-50 text-xs text-slate-300"
+      title="Log in to rate"
+    >
+      ☆
+    </button>
+    <button
+      disabled
+      class="flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-slate-200 bg-slate-50 text-xs text-slate-300"
+      title="Log in to rate"
+    >
+      ☆
+    </button>
+    <button
+      disabled
+      class="flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-slate-200 bg-slate-50 text-xs text-slate-300"
+      title="Log in to rate"
+    >
+      ☆
+    </button>
+    <button
+      disabled
+      class="flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-slate-200 bg-slate-50 text-xs text-slate-300"
+      title="Log in to rate"
+    >
+      ☆
+    </button>
+    <button
+      disabled
+      class="flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-slate-200 bg-slate-50 text-xs text-slate-300"
+      title="Log in to rate"
+    >
+      ☆
+    </button>
+  </div>
+  {{/if}}
+</div>

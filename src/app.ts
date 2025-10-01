@@ -4,6 +4,7 @@ import { Elysia } from "elysia";
 
 import { AuthController } from "./routes/auth";
 import { MoviesController } from "./routes/movies";
+import { RatingController } from "./routes/rating";
 import { templateRenderer } from "./services/template";
 
 const app = new Elysia()
@@ -17,6 +18,7 @@ const app = new Elysia()
   .decorate("templateRenderer", templateRenderer)
   .decorate("moviesController", new MoviesController())
   .decorate("authController", new AuthController())
+  .decorate("ratingController", new RatingController())
   .derive(async ({ headers }) => {
     // Parse session ID from cookie header
     const cookieHeader = headers.cookie || "";
@@ -79,7 +81,10 @@ const app = new Elysia()
         return;
       }
 
-      const result = await moviesController.getHomepage(page);
+      const result = await moviesController.getHomepage(
+        page,
+        authContext.isLoggedIn ? authContext.user?.id : undefined
+      );
 
       // Handle TMDB errors
       if ("error" in result) {
@@ -105,6 +110,8 @@ const app = new Elysia()
         ...result,
         flash,
         AUTH_CONTENT: authContent,
+        is_logged_in: authContext.isLoggedIn,
+        current_user: authContext.user,
       });
     }
   )
@@ -147,6 +154,7 @@ const app = new Elysia()
       "set-cookie": `auth_sid=${
         result.sessionId
       }; Path=/; HttpOnly; SameSite=Lax; Max-Age=${24 * 60 * 60}`,
+      "HX-Refresh": "true",
     };
 
     // Return logged-in header partial
@@ -162,11 +170,44 @@ const app = new Elysia()
 
       // Clear session cookie
       set.headers = {
-        "set-cookie": "auth_sid=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0",
+        "set-cookie": "auth_sid=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0;",
+        "HX-Refresh": "true",
       };
 
       // Return login form partial
       return templateRenderer.renderPartialOnly("auth/login.html");
+    }
+  )
+  // Rating submission endpoint (v2)
+  .post(
+    "/rate",
+    async ({ body, sessionId, templateRenderer, ratingController, set }) => {
+      const result = await ratingController.submitRating(
+        body,
+        sessionId,
+        templateRenderer
+      );
+
+      set.status = result.status;
+      if (result.headers) {
+        set.headers = result.headers;
+      }
+
+      return result.content;
+    }
+  )
+  // Rating stats endpoint (v2) - public
+  .get(
+    "/stats/:movie_id",
+    async ({ params, sessionId, templateRenderer, ratingController, set }) => {
+      const result = await ratingController.getMovieStats(
+        params.movie_id,
+        sessionId,
+        templateRenderer
+      );
+
+      set.status = result.status;
+      return result.content;
     }
   )
   .listen({

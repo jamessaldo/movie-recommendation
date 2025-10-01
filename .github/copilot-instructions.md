@@ -4,6 +4,7 @@ Auto-generated from all feature plans. Last updated: 2025-09-30
 
 ## Active Technologies
 - TypeScript with Bun v1.0+ as JavaScript runtime + Elysia.js (web framework), HTMX (frontend interactions), TailwindCSS with Franken-UI (styling) (001-public-movie-browsing)
+- SQLite for user sessions, ratings, and local data persistence (002-movie-rating-poc)
 
 ## Project Structure
 ```
@@ -19,6 +20,7 @@ npm test [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNO
 TypeScript with Bun v1.0+ as JavaScript runtime: Follow standard conventions
 
 ## Recent Changes
+- 002-movie-rating-poc: Added TypeScript with Bun v1.0+ as JavaScript runtime + Elysia.js (web framework), HTMX (frontend interactions), TailwindCSS with Franken-UI (styling)
 - 001-public-movie-browsing: Added TypeScript with Bun v1.0+ as JavaScript runtime + Elysia.js (web framework), HTMX (frontend interactions), TailwindCSS with Franken-UI (styling)
 
 <!-- MANUAL ADDITIONS START -->

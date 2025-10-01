@@ -1,0 +1,31 @@
+<!-- Stats display partial: shows aggregates and user rating -->
+<div id="stats-{{id}}" class="rating-stats mt-2 text-xs text-slate-600">
+  {{#if is_logged_in}} {{#if userRating}} {{/if}} {{/if}} {{#if stats}} {{#if
+  stats.count}}
+  <!-- Show aggregate stats when ratings exist -->
+  <div class="flex items-center justify-between">
+    <span class="text-[10px] font-medium uppercase tracking-wide text-slate-500"
+      >Community</span
+    >
+    <div class="flex items-center gap-1">
+      <span class="text-sm font-semibold text-slate-800">
+        {{#if stats.avg}}{{stats.avg}}{{else}}–{{/if}}
+      </span>
+      <span class="text-[10px] text-slate-500">/ 5</span>
+    </div>
+  </div>
+  <div class="text-[10px] text-slate-500">
+    {{stats.count}} rating{{#unless (eq stats.count 1)}}s{{/unless}}
+  </div>
+  {{else}}
+  <!-- No ratings yet -->
+  <div class="text-center text-[10px] text-slate-500">
+    Be the first to rate this title
+  </div>
+  {{/if}} {{else}}
+  <!-- Stats loading or error state -->
+  <div class="text-center text-[10px] text-slate-400">
+    Rating data unavailable
+  </div>
+  {{/if}}
+</div>

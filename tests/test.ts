@@ -6,10 +6,10 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { AuthController } from "./src/routes/auth";
-import { MoviesController } from "./src/routes/movies";
-import { templateRenderer } from "./src/services/template";
-import { tmdbService } from "./src/services/tmdb";
+import { AuthController } from "../src/routes/auth";
+import { MoviesController } from "../src/routes/movies";
+import { templateRenderer } from "../src/services/template";
+import { tmdbService } from "../src/services/tmdb";
 
 describe("TMDB Service", () => {
   test("should fetch top rated movies", async () => {
