@@ -299,7 +299,7 @@
 /* Responsive improvements for smaller cards */
 @media (max-width: 640px) {
   .movie-card {
-    max-width: 150px;
+    max-width: 350px;
   }
   
   .movie-card:hover {
@@ -389,42 +389,6 @@
 
 .htmx-request #loading-state {
   display: block !important;
-}
-
-/* Responsive improvements for smaller cards */
-@media (max-width: 640px) {
-  .movie-card {
-    max-width: 150px;
-  }
-  
-  .movie-card:hover {
-    transform: translateY(-3px) scale(1.02);
-  }
-  
-  .uk-container {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  .movie-card .uk-card-body {
-    padding: 8px;
-  }
-  
-  .movie-card .uk-card-title {
-    font-size: 12px;
-  }
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  .movie-card,
-  .movie-poster {
-    transition: none;
-  }
-  
-  .uk-animation-slide-bottom-small {
-    animation: none;
-  }
 }
 
 /* Focus states */

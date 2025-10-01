@@ -106,9 +106,6 @@
 .opacity-25 {
   opacity: 25%;
 }
-.opacity-30 {
-  opacity: 30%;
-}
 .opacity-75 {
   opacity: 75%;
 }
@@ -419,7 +416,7 @@
 }
 @media (max-width: 640px) {
   .movie-card {
-    max-width: 150px;
+    max-width: 350px;
   }
   .movie-card:hover {
     transform: translateY(-3px) scale(1.02);
@@ -484,32 +481,6 @@
 }
 .htmx-request #loading-state {
   display: block !important;
-}
-@media (max-width: 640px) {
-  .movie-card {
-    max-width: 150px;
-  }
-  .movie-card:hover {
-    transform: translateY(-3px) scale(1.02);
-  }
-  .uk-container {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .movie-card .uk-card-body {
-    padding: 8px;
-  }
-  .movie-card .uk-card-title {
-    font-size: 12px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .movie-card, .movie-poster {
-    transition: none;
-  }
-  .uk-animation-slide-bottom-small {
-    animation: none;
-  }
 }
 .uk-button:focus, .uk-input:focus {
   outline: 2px solid #667eea;
